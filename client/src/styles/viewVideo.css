@@ -1,0 +1,348 @@
+/* Modal de Video */
+.video-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.video-modal-content {
+    position: relative;
+    background: #141414;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1001;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.modal-close-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    background: #000;
+    aspect-ratio: 16/9;
+    max-height: 60vh;
+}
+
+.modal-video {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 60vh;
+    display: block;
+    outline: none;
+}
+
+/* Estilos específicos para ReactPlayer */
+.video-container > div {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.video-container video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    outline: none;
+}
+
+/* Asegurar que los controles sean siempre visibles */
+.video-container video::-webkit-media-controls {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.video-container video::-webkit-media-controls-panel {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Controles en pantalla completa */
+.video-container:fullscreen video,
+.video-container:-webkit-full-screen video,
+.video-container:-moz-full-screen video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+}
+
+.video-container:fullscreen video::-webkit-media-controls,
+.video-container:-webkit-full-screen video::-webkit-media-controls,
+.video-container:-moz-full-screen video::-webkit-media-controls {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* ReactPlayer en pantalla completa */
+.video-container:fullscreen,
+.video-container:-webkit-full-screen,
+.video-container:-moz-full-screen {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-container:fullscreen > div,
+.video-container:-webkit-full-screen > div,
+.video-container:-moz-full-screen > div {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.video-info {
+    padding: 24px;
+    color: white;
+}
+
+.video-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 12px 0;
+    color: white;
+}
+
+.video-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.video-year {
+    color: #46d369;
+    font-weight: 600;
+}
+
+.video-category {
+    color: #999;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.video-description {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.video-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.favorite-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.favorite-btn.active {
+    background: #e50914;
+    border-color: #e50914;
+    color: white;
+}
+
+.favorite-btn.active:hover {
+    background: #f40612;
+    border-color: #f40612;
+}
+
+.favorite-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.favorite-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.fullscreen-btn {
+    background: #e50914;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.fullscreen-btn:hover {
+    background: #f40612;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
+}
+
+.fullscreen-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-modal-overlay {
+        padding: 10px;
+    }
+    
+    .video-modal-content {
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+    
+    .video-container {
+        max-height: 50vh;
+    }
+    
+    .modal-video {
+        max-height: 50vh;
+    }
+    
+    .video-info {
+        padding: 16px;
+    }
+    
+    .video-title {
+        font-size: 1.5rem;
+    }
+    
+    .video-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .fullscreen-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-modal-content {
+        border-radius: 8px;
+    }
+    
+    .video-container {
+        max-height: 40vh;
+    }
+    
+    .modal-video {
+        max-height: 40vh;
+    }
+    
+    .video-title {
+        font-size: 1.3rem;
+    }
+    
+    .video-info {
+        padding: 12px;
+    }
+    
+    .fullscreen-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Animación para cuando el video entra en pantalla completa */
+video:fullscreen {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+video:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+video:-moz-full-screen {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+video:-ms-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
