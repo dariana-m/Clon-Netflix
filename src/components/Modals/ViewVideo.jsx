@@ -150,7 +150,7 @@ const ViewVideo = ({ video, isOpen, onClose, onFavoriteChange, onHistoryChange }
                     <ReactPlayer
                         ref={playerRef}
                         src={getDirectDropboxUrl(video.videoUrl)}
-                        controls={false}
+                        controls={true}
                         playing={true}
                         width="100%"
                         height="100%"
@@ -159,6 +159,7 @@ const ViewVideo = ({ video, isOpen, onClose, onFavoriteChange, onHistoryChange }
 
                 <div className="video-info">
                     <h2 className="video-title">{video.title}</h2>
+                    <p> {video.description}</p>
                     <div className="video-meta">
                         <span className="video-year">{video.year}</span>
                         <span className="video-category">{video.category}</span>

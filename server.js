@@ -1,14 +1,13 @@
-const express = require('express');
-const mysql = require('mysql2');
-const bcrypt = require('bcryptjs');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+import express  from 'express';
+import mysql from 'mysql2';
+import bcrypt from 'bcryptjs';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import jwt from 'jsonwebtoken';
 
 const app = express();
 const port = 7001;
-const JWT_SECRET = process.env.JWT_SECRET || 'netfox_secret_key';
+const JWT_SECRET = 'netfox_secret_key';
 
 // Middleware
 app.use(cors());
